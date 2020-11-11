@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\RegistrationController;
+use App\Http\Controllers\TweetsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,9 +17,18 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('home');
 
+/**
+ * routes for registration and auth
+ */
+Route::get('/register',  [RegistrationController::class, 'create'])->name('register');
+Route::post('/process_registration',  [RegistrationController::class, 'processRegistration'])->name('register.process');
+Route::get('/login',  [RegistrationController::class, 'create'])->name('login');
 
-Route::get('/', function () {
-    return view('welcome');
-});
+/**
+ * routs for tweets
+ */
+Route::get('/tweets', [TweetsController::class, 'tweets'])->name('tweets');
+Route::get('/tweets/create', [TweetsController::class, 'createTweet'])->name('tweets.create');
+Route::post('/tweets/create', [TweetsController::class, 'postTweet'])->name('tweets.post');
