@@ -61,16 +61,23 @@
     <div class="container">
         <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
             <a href="{{ route('home') }}" class="ml-4 text-sm text-gray-700 underline">Home</a>
+            <a href="{{ route('tweets.create') }}" class="ml-4 text-sm text-gray-700 underline">Tweet</a>
         </div>
         <div class="row">
-            @foreach($tweets as $tweet)
-                <div class="column">
-                    <div class="card">
-                        <h3>{{$tweet->body}}</h3>
-                        <span>{{$tweet->name}}</span>
+            @if($tweets->count())
+                @foreach($tweets as $tweet)
+                    <div class="column">
+                        <div class="card">
+                            <h3>{{$tweet->body}}</h3>
+                            <span>{{$tweet->name}}</span>
+                        </div>
                     </div>
-                </div>
-            @endforeach
+                @endforeach
+            @else
+                <p>Sorry! There are no tweets. </p>
+                <a href="{{route('tweets.create')}}" style="color: blue;">Create One</a>
+            @endif
+
         </div>
     </div>
 </body>

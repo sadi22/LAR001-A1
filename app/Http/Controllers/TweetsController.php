@@ -24,16 +24,17 @@ class TweetsController extends Controller
 
     public function postTweet( Request $request ) {
         $body = $request->input('body');
-        $current_user_id = User::latest()->first()->id;
-        if($current_user_id) {
-            Tweet::create([
-                'user_id'   => $current_user_id,
-                'body'      => $body,
-                'created_at' => now()
-            ]);
-            return redirect()->route('tweets');
-        }else {
-            return redirect()->route('register');
+        if(User::latest()->first()) {
+            $current_user_id = User::latest()->first()->id;
+            if($current_user_id) {
+                Tweet::create([
+                    'user_id'   => $current_user_id,
+                    'body'      => $body,
+                    'created_at' => now()
+                ]);
+                return redirect()->route('tweets');
+            }
         }
+        return redirect()->route('register');
     }
 }

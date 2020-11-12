@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Laravel</title>
+    <title>Register</title>
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -18,7 +18,7 @@
         body {
             font-family: 'Nunito';
         }
-        input[type=text], select, textarea {
+        input, select, textarea {
             width: 100%;
             padding: 12px;
             border: 1px solid #ccc;
@@ -51,15 +51,15 @@
             padding: 20px;
         }
 
-        .col-25 {
+        .col-30 {
             float: left;
-            width: 25%;
+            width: 30%;
             margin-top: 6px;
         }
 
-        .col-75 {
+        .col-70 {
             float: left;
-            width: 75%;
+            width: 70%;
             margin-top: 6px;
         }
 
@@ -83,42 +83,34 @@
 <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0">
     @if (Route::has('login'))
         <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
-            @auth
-                <a href="{{ url('/home') }}" class="text-sm text-gray-700 underline">Home</a>
-            @else
-                <a href="{{ route('login') }}" class="text-sm text-gray-700 underline">Login</a>
-
-                @if (Route::has('register'))
-                    <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">Register</a>
-                @endif
-            @endif
+            <a href="{{ route('tweets') }}" class="ml-4 text-sm text-gray-700 underline">All tweets</a>
         </div>
     @endif
 
     <form method="POST" action="{{ route('register.process') }}">
         {{ csrf_field() }}
         <div class="row">
-            <div class="col-25">
+            <div class="col-30">
                 <label for="name">Name:</label>
             </div>
-            <div class="col-75">
+            <div class="col-70">
                 <input type="text" class="form-control" id="name" name="name">
             </div>
         </div>
         <div class="row">
 
-            <div class="col-25">
+            <div class="col-30">
                 <label for="email">Email:</label>
             </div>
-            <div class="col-75">
+            <div class="col-70">
                 <input type="email" class="form-control" id="email" name="email">
             </div>
         </div>
         <div class="row">
-            <div class="col-25">
+            <div class="col-30">
                 <label for="password">Password:</label>
             </div>
-            <div class="col-75">
+            <div class="col-70">
                 <input type="password" class="form-control" id="password" name="password">
             </div>
         </div>

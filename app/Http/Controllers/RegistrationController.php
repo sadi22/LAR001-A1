@@ -12,6 +12,12 @@ class RegistrationController extends Controller
         return view('registration.create');
     }
 
+
+    /**
+     * process registration
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse|string
+     */
     public function processRegistration( Request $request ) {
         $name = $request->input('name');
         $email = $request->input('email');
