@@ -9,4 +9,6 @@ git clone https://github.com/sadi22/LAR001-A1.git
 cd LAR001-A1
 composer install
 cp .env.example .env
+php artisan migrate
+php artisan serve
 ```
